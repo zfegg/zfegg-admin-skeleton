@@ -12,12 +12,5 @@
  */
 
 return array(
-    'zfegg_admin'     => array(
-        'db_adapter'                     => array(
-            'driver'   => 'Pdo',
-            'dsn'      => 'mysql:dbname=zfegg-admin;host=localhost;charset=utf8',
-            'username' => 'root',
-            'password' => '',
-        ),
-    ),
+    //...
 );
