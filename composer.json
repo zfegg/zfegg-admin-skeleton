@@ -8,6 +8,10 @@
     ],
     "require": {
         "php": ">=5.5",
-        "zfegg/zfegg-admin": "dev-master"
+        "zfegg/zfegg-admin": "dev-develop",
+        "zfegg/zfegg-admin-model-manager": "dev-develop"
+    },
+    "require-dev": {
+        "fabpot/php-cs-fixer": "~1.0"
     }
 }
