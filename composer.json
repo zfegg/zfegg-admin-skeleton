@@ -1,0 +1,13 @@
+{
+    "name": "zfegg/zfegg-admin-skeleton",
+    "description": "Skeleton Application for ZFegg Admin",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "zf2",
+        "admin"
+    ],
+    "require": {
+        "php": ">=5.5",
+        "zfegg/zfegg-admin": "dev-develop"
+    }
+}
