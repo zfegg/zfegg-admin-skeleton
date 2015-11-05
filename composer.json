@@ -1,10 +1,11 @@
 {
     "name": "zfegg/zfegg-admin-skeleton",
-    "description": "Skeleton Application for ZFegg Admin",
+    "description": "ZFegg Admin 架构应用程序. 克隆 Apigility Skeleton Application.",
     "type": "library",
     "keywords": [
         "api",
-        "apigility",
+        "zfegg",
+        "admin",
         "framework",
         "zf2"
     ],
@@ -17,14 +18,15 @@
         "zfcampus/zf-apigility": "~1.1",
         "zfcampus/zf-apigility-documentation": "^1.0.5",
         "zfcampus/zf-development-mode": "~2.0",
-        "zfegg/zfegg-admin":"dev-develop",
+        "zfegg/zfegg-admin":"dev-master",
         "zfegg/zfegg-admin-ui-kendo":"dev-master"
     },
     "require-dev": {
         "zendframework/zftool": "dev-master",
         "zendframework/zend-developer-tools": "dev-master",
         "zfcampus/zf-apigility-admin": "^1.3.1",
-        "zfcampus/zf-deploy": "~1.0"
+        "zfcampus/zf-deploy": "~1.0",
+        "zfcampus/zf-apigility-admin-ui": "dev-master"
     },
     "suggest": {
         "zfcampus/zf-apigility-doctrine": "zfcampus/zf-apigility-doctrine ~1.0 to create Doctrine-Connected REST services",
