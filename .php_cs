@@ -1,7 +1,6 @@
 <?php
 $finder = Symfony\CS\Finder\DefaultFinder::create()
-    ->in('src')
-    ->in('test')
+    ->in('module')
     ->notPath('TestAsset')
     ->notPath('_files')
     ->filter(function (SplFileInfo $file) {
