@@ -7,15 +7,38 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    protected $uiConfigs = [];
+
+    public function __construct($configs)
+    {
+        $this->uiConfigs = $configs;
+    }
+
     public function indexAction()
     {
-        if (class_exists('\ZF\Apigility\Admin\Module', false)) {
-          return $this->redirect()->toRoute('zf-apigility/ui');
-        }
-        return new ViewModel();
+        $viewModel = new ViewModel([
+            'modules' => $this->uiConfigs['modules'],
+            'configs' => [
+                'oauth' => [
+                    'path' => '/oauth',
+                    'clientId' => '1000',
+                    'clientSecret' => 'testpass',
+                ],
+            ],
+        ]);
+        $viewModel->setTemplate('zfegg-admin-ui');
+        $viewModel->setTerminal(true);
+
+        return $viewModel;
+    }
+
+    public function loginAction()
+    {
+        return new JsonModel(['sdf' => 1]);
     }
 }

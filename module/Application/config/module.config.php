@@ -27,8 +27,8 @@ return array(
         ),
     ),
     'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
+        'factories' => array(
+            'Application\Controller\Index' => 'Application\Factory\IndexControllerFactory',
         ),
     ),
     'view_manager' => array(
@@ -45,6 +45,21 @@ return array(
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
+        ),
+    ),
+    'zfegg-admin' => array(
+        'ui' => array(
+            'modules' => array(
+                'application/init',
+            ),
+        ),
+
+    ),
+    'asset_manager' => array(
+        'resolver_configs' => array(
+            'paths' => array(
+                __DIR__ . '/../public/',
+            ),
         ),
     ),
 );

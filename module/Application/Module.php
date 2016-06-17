@@ -16,6 +16,12 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+
+        /** @var \Zend\ServiceManager\ServiceManager $sm */
+        $sm = $e->getApplication()->getServiceManager();
+        if (!$sm->has('ServiceManager')) {
+            $sm->setService('ServiceManager', $sm);
+        }
     }
 
     public function getConfig()
