@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+namespace Mezzio\Tooling;
+
+use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerAwareInterface;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use Laminas\ServiceManager\ServiceManager;
+
+$root = realpath(__DIR__ . '/../');
+require __DIR__ . '/../vendor/autoload.php';
+chdir($root);
+
+ini_set('memory_limit', '1024M');
+
+/** @var ServiceManager $container */
+$container = include $root . '/config/container.php';
+
+$application = $container->get(Application::class);
+$application->run(null, $container->get(ConsoleOutput::class));
