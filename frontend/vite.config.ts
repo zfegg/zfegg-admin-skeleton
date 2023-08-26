@@ -65,7 +65,7 @@ export default defineConfig({
     server: {
         proxy: {
             '^/(api|zfegg|uploads)/.*': {
-                target: 'http://localhost/moln/bee-bi/backend/public',
+                target: 'http://localhost/zfegg/zfegg-admin-skeleton/backend/public',
                 changeOrigin: true,
             },
         }
