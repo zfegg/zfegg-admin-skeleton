@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Zfegg\ContentValidation\ContentValidationMiddleware;
-use Zfegg\ContentValidation\ContentValidationMiddlewareFactory;
+use Zfegg\PsrMvc\Container\SerializationPreparerStackFactory;
+use Zfegg\PsrMvc\Preparer\PreparerStack;
 
 return [
     // Provides application-wide services.
@@ -25,7 +25,7 @@ return [
         ],
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories'  => [
-            ContentValidationMiddleware::class => ContentValidationMiddlewareFactory::class,
+            PreparerStack::class => SerializationPreparerStackFactory::class,
         ],
         'abstract_factories' => [
         ],
@@ -37,11 +37,6 @@ return [
                 'logger' => Psr\Log\LoggerInterface::class,
             ],
             'types' => [
-                RememberingMe::class => [
-                    'parameters' => [
-                        'rememberSecret' => 'foooooooo',
-                    ],
-                ]
             ]
         ],
     ],

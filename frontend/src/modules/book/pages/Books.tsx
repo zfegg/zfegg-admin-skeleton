@@ -1,19 +1,18 @@
-import React, {Component, FC, useState} from "react";
+import React, {FC, useState} from "react";
 import {PageContainer} from "@ant-design/pro-layout";
 import {Button, Space} from "antd";
 import {
+    DeleteButton,
     FormDrawer,
     ProColumnType,
     ProTable,
-    valueEnumToOptions,
     useDataSource,
-    DeleteButton
+    useDataSourceBindSearch,
+    valueEnumToOptions
 } from "@zfegg/admin-data-source-components";
-import {DataSource, Resources} from "@moln/data-source";
-import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
+import {EditOutlined} from "@ant-design/icons";
 import {Book} from "../models/book";
 import {statusEnum} from "@/modules/book/constants";
-
 
 
 const Books: FC = () => {
@@ -60,6 +59,7 @@ const Books: FC = () => {
             },
         }
     ];
+    useDataSourceBindSearch(dataSource)
 
     return (
         <PageContainer extra={[
@@ -70,6 +70,7 @@ const Books: FC = () => {
                     }}>新增</Button>
         ]}>
             <ProTable
+                autoFetch={false}
                 defaultSize={"small"}
                 columns={columns}
                 dataSource={dataSource}
