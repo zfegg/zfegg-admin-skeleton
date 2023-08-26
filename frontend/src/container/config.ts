@@ -1,8 +1,8 @@
 import mergeWith from 'lodash/mergeWith';
-import {ConfigProvider as AdminApp, CONFIG_KEY as applicationConfigKey, configMerge, IConfigProvider } from '@zfegg/admin-application'
+import {ConfigProvider as AdminApp, CONFIG_KEY as applicationConfigKey, configMerge, IConfigProvider } from '@zfegg/admin-layout'
 import {ConfigProvider as AdminAdmin } from '@zfegg/admin-admin'
 import BookConfigProvider from '@/modules/book/config-provider'
-import '@zfegg/admin-application/dist/style.css'
+import '@zfegg/admin-layout/dist/style.css'
 import '@zfegg/admin-admin/dist/style.css'
 
 const moduleConfigs: object[] = [

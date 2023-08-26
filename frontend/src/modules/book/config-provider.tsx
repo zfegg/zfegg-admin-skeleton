@@ -1,7 +1,7 @@
 import {DependencyConfigInterface, FactoryFunction, InjectionToken} from "@moln/dependency-container";
 import {lazy} from "react";
 import Ajv from "ajv";
-import { RouteConfigMap } from "@zfegg/admin-application";
+import { RouteConfigMap } from "@zfegg/admin-layout";
 import { book } from "./models/book";
 
 const ConfigProvider = {

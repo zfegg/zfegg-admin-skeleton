@@ -2,8 +2,7 @@
     "name": "zfegg/admin-application-skeleton",
     "description": "后台程序",
     "type": "project",
-    "homepage": "https://github.com/zfegg/admin-application-skeleton",
-
+    "homepage": "https://github.com/zfegg/zfegg-admin-skeleton",
     "extra": {
         "laminas": {
             "component-whitelist": [
@@ -19,8 +18,10 @@
         "php": ">=8.0",
         "ext-json": "*",
         "akrabat/ip-address-middleware": "^2.0",
+        "firebase/php-jwt": "^6.8",
         "gedmo/doctrine-extensions": "^3.4",
         "laminas/laminas-config-aggregator": "^1.2",
+        "laminas/laminas-di": "^3.12",
         "laminas/laminas-diactoros": "^2.3.0",
         "laminas/laminas-servicemanager": "^3.4",
         "mezzio/mezzio": "^3.2.1",
@@ -30,23 +31,24 @@
         "mezzio/mezzio-problem-details": "^1.2",
         "mezzio/mezzio-session-ext": "^1.10",
         "nikolaposa/monolog-factory": "^3.1",
-        "roave/psr-container-doctrine": "^3.5",
+        "opis/json-schema": "^2.1",
+        "roave/psr-container-doctrine": "^3.5.0",
         "symfony/property-access": "*",
-        "zfegg/admin-admin": "^0.6.3",
-        "zfegg/admin-center-oauth-handler": "^2.1.6",
-        "zfegg/attachment-handler": "^0.2.0",
-        "zfegg/api-resource-doctrine": "^0.4.0",
-        "zfegg/content-validation": "^5.2.2",
+        "zfegg/admin-admin": "^0.1.2",
+        "zfegg/api-resource-doctrine": "^0.5.0",
+        "zfegg/attachment-handler": "^0.1.1",
+        "zfegg/content-validation": "^5.1",
         "zfegg/doctrine-helper": "^0.2.0",
-        "zfegg/psr11-symfony-cache": "^0.1.0",
-        "zfegg/stratigility-logging-error": "^2.0"
+        "zfegg/psr-mvc": "^2.2.1",
+        "zfegg/psr11-symfony-cache": "^0.1.0"
     },
     "require-dev": {
-        "filp/whoops": "^2.14.0",
-        "laminas/laminas-development-mode": "^3.2",
+        "filp/whoops": "^2.7.1",
+        "composer/package-versions-deprecated": "^1.10.99",
         "laminas/laminas-component-installer": "^2.1.2",
+        "laminas/laminas-development-mode": "^3.2",
         "mezzio/mezzio-session-cache": "^1.5",
-        "mezzio/mezzio-tooling": "^2.7.0",
+        "mezzio/mezzio-tooling": "^2.0",
         "phpspec/prophecy": "^1.10.3",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^9.3.7",
@@ -57,7 +59,6 @@
     },
     "autoload": {
         "psr-4": {
-            "": "src/",
             "App\\": "src/App/src/",
             "Book\\": "src/Book/src/",
             "Book2\\": "src/Book2/src/"
@@ -67,7 +68,7 @@
         "psr-4": {
             "": "test/",
             "BookTest\\": "src/Book/test/",
-            "BookTest2\\": "src/Book2/test/"
+            "Book2Test\\": "src/Book2/test/"
         }
     },
     "scripts": {
@@ -85,10 +86,11 @@
         "clear-config-cache": "php bin/clear-config-cache.php",
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
-        "serve": "php -S 0.0.0.0:5000 -t public/",
+        "serve": "php -S 0.0.0.0:8080 -t public/",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
-        "dump-update-sql": "php bin/console orm:schema-tool:update --dump-sql"
+        "dump-update-sql": "@php bin/console orm:schema-tool:update --dump-sql",
+        "exec-update-sql": "@php bin/console orm:schema-tool:update --force"
     },
     "config": {
         "sort-packages": true,
@@ -96,5 +98,12 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "laminas/laminas-component-installer": true
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/",
+            "only": ["zfegg/admin-*"]
+        }
+    ]
 }

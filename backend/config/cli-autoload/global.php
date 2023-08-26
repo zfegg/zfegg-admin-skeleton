@@ -1,14 +1,31 @@
 <?php
 
+use Monolog\Handler\PsrHandler;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
     'dependencies' => [
         'factories' => [
+            'console.logger'     => function (ContainerInterface $container) {
+                $file = __DIR__ . '/../../data/logs/console.log';
+
+                $logger = new Monolog\Logger('console');
+                $logger->pushProcessor(new Monolog\Processor\UidProcessor());
+                $logger->pushHandler(new Monolog\Handler\StreamHandler($file));
+                $logger->pushHandler(
+                    new PsrHandler(
+                        new ConsoleLogger($container->get(ConsoleOutput::class))
+                    )
+                );
+
+
+                return $logger;
+            },
             ConsoleOutput::class => InvokableFactory::class,
             Application::class => function (ContainerInterface $container) {
                 $commands = $container->get('config')['commands'];
@@ -35,12 +52,5 @@ return [
             },
         ],
     ],
-    'commands'     => [
-//        SFMessenger\Command\ConsumeMessagesCommand::class,
-//        SFMessenger\Command\StopWorkersCommand::class,
-//        SFMessenger\Command\SetupTransportsCommand::class,
-//        SFMessenger\Command\FailedMessagesRemoveCommand::class,
-//        SFMessenger\Command\FailedMessagesRetryCommand::class,
-//        SFMessenger\Command\FailedMessagesShowCommand::class,
-    ],
+    'commands'     => [],
 ];

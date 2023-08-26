@@ -49,6 +49,7 @@ return [
         'before_route' => [
             'middleware' => [
                 ErrorHandler::class,
+                \Blast\BaseUrl\BaseUrlMiddleware::class,
                 ServerUrlMiddleware::class,
                 BodyParamsMiddleware::class,
                 RKA\Middleware\IpAddress::class,

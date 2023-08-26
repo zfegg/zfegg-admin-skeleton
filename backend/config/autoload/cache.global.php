@@ -8,15 +8,16 @@ return [
         ],
         'aliases' => [
             \Psr\Cache\CacheItemPoolInterface::class => 'cache.default',
-        ],
+            'doctrine.cache.array' => 'cache.array',
+        ]
     ],
 
     'cache' => [
         // At the bare minimum you must include a default adaptor.
         'default' => [
-            'type' => 'filesystem',
+            'type' => 'local',
             'options' => [
-                'directory' => 'data/cache/'
+                'root' => 'data/cache/'
             ],
         ],
 

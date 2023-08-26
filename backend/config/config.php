@@ -19,22 +19,23 @@ $providers = [
     \Mezzio\Router\ConfigProvider::class,
     \Mezzio\Router\FastRouteRouter\ConfigProvider::class,
     \Mezzio\Session\ConfigProvider::class,
+    \Mezzio\Session\Cache\ConfigProvider::class,
     \Mezzio\Session\Ext\ConfigProvider::class,
     \Mezzio\ProblemDetails\ConfigProvider::class,
 
     \Laminas\HttpHandlerRunner\ConfigProvider::class,
     \Laminas\Diactoros\ConfigProvider::class,
+    \Laminas\Di\ConfigProvider::class,
 
-    \Zfegg\AdminCenterOauthHandler\Mezzio\ConfigProvider::class,
     \Zfegg\Admin\Admin\ConfigProvider::class,
 
     \Zfegg\ApiSerializerExt\ConfigProvider::class,
     \Zfegg\ApiRestfulHandler\ConfigProvider::class,
     \Zfegg\ApiResourceDoctrine\ConfigProvider::class,
+    \Zfegg\PsrMvc\ConfigProvider::class,
     \Zfegg\DoctrineHelper\ConfigProvider::class,
     \Zfegg\ContentValidation\ConfigProvider::class,
-    \Zfegg\Stratigility\LoggingError\ConfigProvider::class,
-    \Zfegg\PsrMvc\ConfigProvider::class,
+    \Zfegg\AttachmentHandler\ConfigProvider::class,
 
     // Default App module config
     \App\ConfigProvider::class,
@@ -55,15 +56,6 @@ $providers = [
     // Load development config if it exists
     new PhpFileProvider(realpath(__DIR__) . '/development.config.php'),
 ];
-
-// Development ENV
-if (PHP_OS == 'WINNT' || getenv('APP_ENV') == 'development') {
-    array_unshift(
-        $providers,
-        \Mezzio\Session\Cache\ConfigProvider::class,
-        \Blast\BaseUrl\ConfigProvider::class,
-    );
-}
 
 if (PHP_SAPI == 'cli') {
     $providers = array_merge(

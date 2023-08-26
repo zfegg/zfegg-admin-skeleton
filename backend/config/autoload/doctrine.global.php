@@ -1,6 +1,7 @@
 <?php
 
 use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
+use Doctrine\ORM\Tools\ResolveTargetEntityListener;
 use Zfegg\DoctrineHelper\ContainerEntityListenerResolver;
 
 return [
@@ -41,24 +42,24 @@ return [
         'event_manager' => [
             'default' => [
                 'subscribers' => [
+                    ResolveTargetEntityListener::class,
 //                    TimestampableListener::class,
 //                    SoftDeleteableListener::class,
                 ],
             ],
         ],
+
         'driver' => [
+            'attribute' => [
+                'class' => \Doctrine\ORM\Mapping\Driver\AttributeDriver::class,
+                'cache' => 'cache.default',
+            ],
             'default' => [
                 'class' => \Doctrine\Persistence\Mapping\Driver\MappingDriverChain::class,
                 'default_driver' => 'attribute',
                 'drivers' => [
                 ],
             ],
-            'attribute' => [
-                'class' => \Doctrine\ORM\Mapping\Driver\AttributeDriver::class,
-            ],
-        ],
-        'cache' => [
-            'array' => 'cache.array',
         ],
         'types' => [
         ],

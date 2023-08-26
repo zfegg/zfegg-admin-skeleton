@@ -34,23 +34,10 @@ return [
             'ajax_only'  => true,
         ],
     ],
-
     'doctrine' => [
         'configuration' => [
             'default' => [
                 'sql_logger' => \Doctrine\DBAL\Logging\DebugStack::class,
-            ],
-        ],
-        'driver' => [
-            'annotation' => [
-                'cache' => 'array',
-            ],
-        ],
-    ],
-    'middleware_pipeline' => [
-        'before_route' => [
-            'middleware' => [
-                \Blast\BaseUrl\BaseUrlMiddleware::class,
             ],
         ],
     ],
