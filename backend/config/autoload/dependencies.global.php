@@ -6,6 +6,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Zfegg\PsrMvc\Container\SerializationPreparerStackFactory;
 use Zfegg\PsrMvc\Preparer\PreparerStack;
+use Zfegg\PsrMvc\Routing\RouteMetadata;
 
 return [
     // Provides application-wide services.
@@ -29,7 +30,6 @@ return [
         ],
         'abstract_factories' => [
         ],
-
         'auto' => [
             'aot' => [
                 'namespace' => 'AppAoT\Generated',
@@ -37,6 +37,13 @@ return [
                 'logger' => Psr\Log\LoggerInterface::class,
             ],
             'types' => [
+                RouteMetadata::class => [
+                    'parameters' => [
+                        'paths' => glob(dirname(__DIR__) . '/../src/*/src/Controller'),
+                        'excludePaths' => [
+                        ],
+                    ],
+                ]
             ]
         ],
     ],

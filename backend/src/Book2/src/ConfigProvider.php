@@ -19,23 +19,6 @@ class ConfigProvider
             'dependencies' => $this->getDependencies(),
 //            'doctrine' => $this->getDoctrine(),
             'routes' => $this->getRoutes(),
-            RouteMetadata::class => [
-                'groups' => [
-                    'api.book.v2' => [
-                        'prefix' => '/api/book/v2/',
-                        'middlewares' => [
-                            SessionMiddleware::class,
-                            AuthenticationMiddleware::class,    // 登录认证中间件(登录验证)
-                            AuthorizationMiddleware::class,     // 授权验证
-                            ContentValidationMiddleware::class, // 数据内容验证支持
-                        ],
-                        'name' => 'api.book.v2.'
-                    ]
-                ],
-                'paths' => [
-                    __DIR__ . '/Controller',
-                ]
-            ]
         ];
     }
 
@@ -113,7 +96,27 @@ class ConfigProvider
     {
         return [
             'factories' => [
-            ]
+            ],
+            'auto' => [
+                'types' => [
+                    RouteMetadata::class => [
+                        'parameters' => [
+                            'groups' => [
+                                'api.book.v2' => [
+                                    'prefix' => '/api/book/v2/',
+                                    'middlewares' => [
+                                        SessionMiddleware::class,
+                                        AuthenticationMiddleware::class,    // 登录认证中间件(登录验证)
+                                        AuthorizationMiddleware::class,     // 授权验证
+                                        ContentValidationMiddleware::class, // 数据内容验证支持
+                                    ],
+                                    'name' => 'api.book.v2.'
+                                ]
+                            ],
+                        ],
+                    ]
+                ]
+            ],
         ];
     }
 }

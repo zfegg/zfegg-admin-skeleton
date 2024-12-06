@@ -18,34 +18,27 @@
         "php": ">=8.0",
         "ext-json": "*",
         "akrabat/ip-address-middleware": "^2.0",
-        "firebase/php-jwt": "^6.8",
         "gedmo/doctrine-extensions": "^3.4",
-        "laminas/laminas-config-aggregator": "^1.2",
-        "laminas/laminas-di": "^3.12",
-        "laminas/laminas-diactoros": "^2.3.0",
-        "laminas/laminas-servicemanager": "^3.4",
-        "mezzio/mezzio": "^3.2.1",
+        "laminas/laminas-config-aggregator": "^1.6",
+        "laminas/laminas-di": "^3.14",
+        "laminas/laminas-diactoros": "^3.3.1",
+        "laminas/laminas-servicemanager": "^4.0",
+        "mezzio/mezzio": "^3.7",
         "mezzio/mezzio-authentication": "^1.2",
-        "mezzio/mezzio-fastroute": "^3.0.3",
-        "mezzio/mezzio-helpers": "^5.3",
+        "mezzio/mezzio-fastroute": "^3.11.0",
+        "mezzio/mezzio-helpers": "^5.7",
         "mezzio/mezzio-problem-details": "^1.2",
         "mezzio/mezzio-session-ext": "^1.10",
         "nikolaposa/monolog-factory": "^3.1",
-        "opis/json-schema": "^2.1",
-        "roave/psr-container-doctrine": "^3.5.0",
-        "symfony/property-access": "*",
-        "zfegg/admin-admin": "^0.1.2",
-        "zfegg/api-resource-doctrine": "^0.5.0",
-        "zfegg/attachment-handler": "^0.1.1",
+        "zfegg/admin-admin": "^0.3.0",
+        "zfegg/api-doctrine-pack": "^0.1.0",
         "zfegg/content-validation": "^5.1",
-        "zfegg/doctrine-helper": "^0.2.0",
-        "zfegg/psr-mvc": "^2.2.1",
         "zfegg/psr11-symfony-cache": "^0.1.0"
     },
     "require-dev": {
         "filp/whoops": "^2.7.1",
         "composer/package-versions-deprecated": "^1.10.99",
-        "laminas/laminas-component-installer": "^2.1.2",
+        "laminas/laminas-component-installer": "^2.6 || ^3.0",
         "laminas/laminas-development-mode": "^3.2",
         "mezzio/mezzio-session-cache": "^1.5",
         "mezzio/mezzio-tooling": "^2.0",
@@ -54,7 +47,7 @@
         "phpunit/phpunit": "^9.3.7",
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "^8.5",
-        "zfegg/expressive-test": "^0.6.0",
+        "zfegg/expressive-test": "^0.7.1",
         "guidofaecke/blast-base-url": "^2.0"
     },
     "autoload": {
@@ -98,12 +91,5 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "laminas/laminas-component-installer": true
         }
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://mirrors.aliyun.com/composer/",
-            "only": ["zfegg/admin-*"]
-        }
-    ]
+    }
 }

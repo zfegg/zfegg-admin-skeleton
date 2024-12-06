@@ -15,6 +15,7 @@ use Mezzio\Router\Middleware\ImplicitHeadMiddleware;
 use Mezzio\Router\Middleware\ImplicitOptionsMiddleware;
 use Mezzio\Router\Middleware\MethodNotAllowedMiddleware;
 use Mezzio\Router\Middleware\RouteMiddleware;
+use Zfegg\PsrMvc\Container\LoggingError\LoggingErrorDelegator;
 
 return [
     // Toggle the configuration cache. Set this to boolean false, or remove the
@@ -32,6 +33,9 @@ return [
         'delegators' => [
             Application::class => [
                 ApplicationConfigInjectionDelegator::class,
+            ],
+            ErrorHandler::class => [
+                LoggingErrorDelegator::class,
             ],
         ],
     ],
